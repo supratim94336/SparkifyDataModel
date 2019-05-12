@@ -11,7 +11,8 @@ Postgres (https://www.postgresql.org/download/)
 Python 3.5 or above (https://www.python.org/downloads/)
 
 #### Installing
-You need to install this python dependencies (*optional:You can always create a virtual environment and install all the dependencies for python inside your virtual environment*)
+You need to install this python dependencies (*optional:You can always create a virtual environment and install all the 
+dependencies for python inside your virtual environment*)
 In Terminal/CommandPromt:
 ```
 pip install -r requirements.txt
@@ -33,7 +34,12 @@ or,
 You can you use the test.ipynb notebook to query according to your needs
 
 ### Facts and Dimensions Tables:
-This database is built upon a star schema with songplays (as facts) table at the centre and users, songs, artists, time etc. (as dimensions) around it connected 
+This database is built upon a star schema with songplays (as facts) table at the centre and users, songs, artists, time 
+etc. (as dimensions) around it connected 
+
+### About the data
+you can dump your user activity log files and song metadata files inside the data folder. The folder structure for 
+metadata and user activity logs are already created. You just need to dump your files there
 
 ### Example Queries
 Once you are done setting up you can get started with some exciting queries like
