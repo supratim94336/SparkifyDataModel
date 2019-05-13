@@ -10,9 +10,9 @@ time_table_drop = "DROP TABLE IF EXISTS time;"
 
 songplay_table_create = ("""
  CREATE TABLE IF NOT EXISTS songplays (songplay_id SERIAL PRIMARY KEY, 
- start_time timestamp, user_id varchar, level varchar, song_id varchar,
-  artist_id varchar, session_id int, location varchar, 
-  user_agent varchar);
+ start_time timestamp, user_id varchar NOT NULL, level varchar, 
+ song_id varchar NOT NULL, artist_id varchar NOT NULL, 
+ session_id int NOT NULL, location varchar, user_agent varchar);
 """)
 
 user_table_create = ("""
@@ -23,7 +23,8 @@ level varchar NOT NULL);
 
 song_table_create = ("""
 CREATE TABLE IF NOT EXISTS songs (song_id varchar PRIMARY KEY, 
-title varchar NOT NULL, artist_id varchar, year int, duration numeric);
+title varchar NOT NULL, artist_id varchar NOT NULL, year int, 
+duration numeric);
 """)
 
 artist_table_create = ("""
@@ -41,7 +42,10 @@ hour int, day int, week int, month int, year int, week_day varchar);
 
 songplay_table_insert = ("""
 INSERT INTO songplays (start_time, user_id, level, song_id, artist_id,
- session_id, location, user_agent) VALUES (%s,%s,%s,%s,%s,%s,%s,%s);
+ session_id, location, user_agent) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
+ ON CONFLICT (start_time, user_id, song_id, artist_id)
+ DO
+ NOTHING;
 """)
 
 user_table_insert = ("""
