@@ -24,8 +24,8 @@ def process_song_file(cur, filepath):
 
     # insert artist record
     artist_data = df[['artist_id', 'artist_name', 'artist_location',
-                      'artist_latitude', 'artist_longitude']].values[
-        0].tolist()
+                      'artist_latitude',
+                      'artist_longitude']].values[0].tolist()
     cur.execute(artist_table_insert, artist_data)
 
 
@@ -34,9 +34,9 @@ def process_log_file(cur, filepath):
     i/p: cursor, filepath
     returns: None
     This function takes a json file (user activity log file) and
-    extracts the necessary attributes needed for the time, users,
-    and user activity table, transforms it and loads it on the
-    relational database
+    extracts the necessary attributes needed for the time, users, and
+    user activity table, transforms it and loads it on the relational
+    database
     """
     # open log file
     df = pd.read_json(filepath, lines=True)
