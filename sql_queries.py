@@ -43,7 +43,7 @@ hour int, day int, week int, month int, year int, week_day varchar);
 songplay_table_insert = ("""
 INSERT INTO songplays (start_time, user_id, level, song_id, artist_id,
  session_id, location, user_agent) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
- ON CONFLICT (start_time, user_id, song_id, artist_id)
+ ON CONFLICT (start_time, user_id, song_id, artist_id, session_id)
  DO
  NOTHING;
 """)
